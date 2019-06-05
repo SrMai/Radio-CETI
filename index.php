@@ -2,6 +2,22 @@
 require 'database.php';
 ?>
 
+
+<?php
+$message = '';
+if (!empty($_POST['nombre']) && !empty($_POST['mensaje'])) {
+    $sql = "INSERT INTO live_chat (nombre, mensaje) VALUES (:nombre, :mensaje)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':nombre', $_POST['nombre']);
+    $stmt->bindParam(':mensaje', $_POST['mensaje']);
+    if ($stmt->execute()) {
+        $message = '';
+    } else {
+        $message = '';
+    }
+}
+?>
+
 <!--
     Creditos:
     Html5 up || @ajlkn ||
@@ -75,7 +91,7 @@ require 'database.php';
             <!-- Pedir una cancion -->
             <article id="pedir">
                 <h2 class="major">¿Qué canción quieres?</h2>
-                <form method="POST" action="index.php">
+                <form method="POST" action="s_p.php">
                     <div class="fields">
                         <div class="field half">
                             <label for="artista">Nombre de la canción</label>
@@ -90,58 +106,11 @@ require 'database.php';
                             <input name="comentario" type="text" placeholder="¿Quieres mandar algun saludo?" autocomplete="nope" required>
                         </div>
                     </div>
-                    <style>
-                        input[type="submit"],
-                        button,
-                        .button {
-                            -moz-appearance: none;
-                            -webkit-appearance: none;
-                            -ms-appearance: none;
-                            appearance: none;
-                            -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-                            -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-                            -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-                            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-                            background-color: transparent;
-                            border-radius: 4px;
-                            border: 0;
-                            box-shadow: inset 0 0 0 1px #ffffff;
-                            color: #ffffff !important;
-                            cursor: pointer;
-                            display: inline-block;
-                            font-size: 0.8rem;
-                            font-weight: 300;
-                            height: 2.75rem;
-                            letter-spacing: 0.2rem;
-                            line-height: 2.75rem;
-                            outline: 0;
-                            padding: 0 1.25rem 0 1.35rem;
-                            text-align: center;
-                            text-decoration: none;
-                            text-transform: uppercase;
-                            white-space: nowrap;
-                        }
-                    </style>
-                    <ul>
-                        <li><input type="submit" value="Pedir canción" /></li>
+                    <ul class="actions">
+                        <li><input type="submit" value="Pedir canción" class="primary" /></li>
                     </ul>
                 </form>
             </article>
-            <?php
-            $message = '';
-            if (!empty($_POST['nombre']) && !empty($_POST['artista']) && !empty($_POST['comentario'])) {
-                $sql = "INSERT INTO pedidos (nombre, artista, comentario) VALUES (:nombre, :artista, :comentario)";
-                $stmt = $conn->prepare($sql);
-                $stmt->bindParam(':nombre', $_POST['nombre']);
-                $stmt->bindParam(':artista', $_POST['artista']);
-                $stmt->bindParam(':comentario', $_POST['comentario']);
-                if ($stmt->execute()) {
-                    $message = '<h1>Gracias por enviar tu canción! :)</h1>';
-                } else {
-                    $message = 'Error al enviar el formulario';
-                }
-            }
-            ?>
 
             <!-- Live-Chat -->
             <article id="chat">
@@ -162,25 +131,11 @@ require 'database.php';
                     </ul>
                 </form>
             </article>
-            <?php
-            $message = '';
-            if (!empty($_POST['nombre']) && !empty($_POST['mensaje'])) {
-                $sql = "INSERT INTO live_chat (nombre, mensaje) VALUES (:nombre, :mensaje)";
-                $stmt = $conn->prepare($sql);
-                $stmt->bindParam(':nombre', $_POST['nombre']);
-                $stmt->bindParam(':mensaje', $_POST['mensaje']);
-                if ($stmt->execute()) {
-                    $message = '';
-                } else {
-                    $message = '';
-                }
-            }
-            ?>
 
             <!-- Contacto -->
             <article id="contacto">
                 <h2 class="major">Contacto</h2>
-                <form method="POST" action="index.php">
+                <form method="POST" action="s_c.php">
                     <div class="fields">
                         <div class="field half">
                             <label for="nombre">Nombre</label>
@@ -201,21 +156,6 @@ require 'database.php';
                 </form>
             </article>
         </div>
-        <?php
-        $message = '';
-        if (!empty($_POST['nombre']) && !empty($_POST['email']) && !empty($_POST['mensaje'])) {
-            $sql = "INSERT INTO contacto (nombre, email, mensaje) VALUES (:nombre, :email, :mensaje)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':nombre', $_POST['nombre']);
-            $stmt->bindParam(':email', $_POST['email']);
-            $stmt->bindParam(':mensaje', $_POST['mensaje']);
-            if ($stmt->execute()) {
-                header('Location: index.php');
-            } else {
-                $message = '';
-            }
-        }
-        ?>
 
         <!-- Footer -->
         <footer id="footer">
