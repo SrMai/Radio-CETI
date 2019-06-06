@@ -78,7 +78,7 @@ if (!empty($_POST['nombre']) && !empty($_POST['mensaje'])) {
                 <nav>
                     <ul>
                         <li><a href="#pedir">Pedir cancion</a></li>
-                        <li><a href="#chat">Live-Chat</a></li>
+                        <li><a href="chat.php">Live-Chat</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </nav>
