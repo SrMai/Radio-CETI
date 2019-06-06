@@ -6,11 +6,14 @@ require 'database.php';
 $sql = "SELECT * FROM live_chat";
 $result = mysqli_query($conn, $sql);
 
+echo('<div style="width:100%; padding: 5px;">');
+
 while ($mostrar = mysqli_fetch_array($result)) { ?>
     <div>
-        <span style="color: #1C62C4;"><?php echo $mostrar['nombre']; ?></span>
-        <span style="color: #848484;"><?php echo $mostrar['mensaje']; ?></span>
+    <p style="font-size: 15px; color: #1C62C4;"><?php echo $mostrar['nombre']; ?></p>
+    <p style="font-size: 15px; color: #848484;"><?php echo $mostrar['mensaje']; ?></p>
     </div>
 <?php
 }
+echo('</div>');
 ?>
