@@ -108,13 +108,6 @@ if (!empty($_POST['nombre']) && !empty($_POST['mensaje'])) {
         color: #ff9900;
     }
 
-    .sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  padding: 5px;
-  background-color: #1B1F22;
-}
 </style>
 
 </head>
@@ -124,21 +117,7 @@ if (!empty($_POST['nombre']) && !empty($_POST['mensaje'])) {
     <center>
         <h2 class="major">Expo-Ciencia</h2>
     </center>
-        <div class="sticky">
-        <form method="POST" action="chat.php">
-            <div class="fields">
-                <div class="field half">
-                    <input name="nombre" type="text" placeholder="Nombre" required>
-                </div>
-                <div class="field">
-                    <textarea maxlength="80" name="mensaje" type="text" placeholder="Texto" autocomplete="none" required></textarea>
-                    </div>
-            </div>
-            <ul class="actions">
-                <li><input type="submit" value="Enviar" class="primary" /></li>
-            </ul>
-        </form>
-    </div>
+        
     <div style="color:white; border-radius:15px; margin:1%;" class="text-center bg-min-dark font-weight-light">
         <div id="bienvenido" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
             <hr style="width: 90%;" class="hr-light">
