@@ -1,0 +1,19 @@
+<!-- Live-Chat -->
+            <article id="chat">
+                <h2 class="major">Live</h2>
+                <div id="recargar"> </div>
+                <br />
+                <form method="POST" action="index.php">
+                    <div class="fields">
+                        <div class="field half">
+                            <input name="nombre" type="text" placeholder="Nombre" required>
+                        </div>
+                        <div class="field">
+                            <textarea name="mensaje" type="text" placeholder="Texto" autocomplete="none" required></textarea>
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Enviar" class="primary" /></li>
+                    </ul>
+                </form>
+            </article>
