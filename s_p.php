@@ -3,7 +3,7 @@ require 'database.php';
 ?>
 
 <?php
-$message = '';
+echo $message;
 if (!empty($_POST['nombre']) && !empty($_POST['artista']) && !empty($_POST['comentario'])) {
     $sql = "INSERT INTO pedidos (nombre, artista, comentario) VALUES (:nombre, :artista, :comentario)";
     $stmt = $conn->prepare($sql);
@@ -11,9 +11,12 @@ if (!empty($_POST['nombre']) && !empty($_POST['artista']) && !empty($_POST['come
     $stmt->bindParam(':artista', $_POST['artista']);
     $stmt->bindParam(':comentario', $_POST['comentario']);
     if ($stmt->execute()) {
-        $message = '';
+        $message = 'Enviado';
+        echo $message;
     } else {
-        $message = '';
+        $message = 'Error';
+        echo $message;
+
     }
 }
 ?>
